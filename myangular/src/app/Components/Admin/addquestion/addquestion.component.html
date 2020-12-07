@@ -1,0 +1,121 @@
+<h3>Add Question</h3>
+<div [hidden]="submitted">
+    <form #addQuestionForm="ngForm">
+
+     <div class="form-group">
+        <select name="quizname" [(ngModel)]="que.quizname">
+            <option *ngFor="let i of quizname;" value="{{i.quizname}}">{{ i.quizname}}</option>
+        </select>
+     </div> 
+
+     <div class="form-group">
+        <select name="category"  [(ngModel)]="que.category">
+                <option *ngFor="let i of category;" value="{{i.category}}" >{{ i.category}}</option>
+        </select>
+     </div> 
+     
+     <div class="form-group">
+        <select name="type"  [(ngModel)]="que.type">
+            <option *ngFor="let i of type;" value="{{i.type}}">{{ i.type}}</option>
+        </select>
+     </div> 
+
+     <div *ngIf="que.type == 'mcq'" > 
+      
+      <div class="form-group">
+        <input type="radio"  [(ngModel)]="que.answer" value="{{que.option1}}" name="option">
+        <label for="option1">Option 1</label>
+        <input type="text" class="form-control" id="option1" placeholder="option1"
+        required
+        [(ngModel)]="que.option1" name="option1" #option1="ngModel">
+        <div [hidden]="option1.valid || option1.pristine"
+             class="alert alert-danger">
+             option1 is required
+        </div>
+      </div>
+      
+
+      <input type="radio"  [(ngModel)]="que.answer" value="{{que.option2}}" name="option">
+      <div class="form-group">
+        <label for="option2">Option 2</label>
+        <input type="text" class="form-control" id="option2" placeholder="option2"
+        required
+        [(ngModel)]="que.option2" name="option2" #option2="ngModel">
+        <div [hidden]="option2.valid || option2.pristine"
+             class="alert alert-danger">
+             option2 is required
+        </div>
+      </div>
+
+      <input type="radio"  [(ngModel)]="que.answer" value="{{que.option3}}" name="option">
+      <div class="form-group">
+        <label for="option3">Option 3</label>
+        <input type="text" class="form-control" id="option3" placeholder="option3"
+        required
+        [(ngModel)]="que.option3" name="option3" #option3="ngModel">
+        <div [hidden]="option3.valid || option3.pristine"
+             class="alert alert-danger">
+             option3 is required
+        </div>
+      </div>
+
+      <input type="radio"  [(ngModel)]="que.answer" value="{{que.option4}}" name="option">
+      <div class="form-group">
+        <label for="option4">Option 4</label>
+        <input type="text" class="form-control" id="option4" placeholder="option4"
+        required
+        [(ngModel)]="que.option4" name="option4" #option4="ngModel">
+        <div [hidden]="option4.valid || option4.pristine"
+             class="alert alert-danger">
+             option4 is required
+        </div>
+      </div>
+     </div>
+
+     <div *ngIf="que.typeName == 'true-false'" > 
+      
+      <div class="form-group">
+        <input type="radio"  [(ngModel)]="que.answer" value="{{que.option1}}" name="option">
+        <label for="option1">Option 1</label>
+        <input type="text" class="form-control" id="option1" placeholder="option1"
+        required
+        [(ngModel)]="que.option1" name="option1" #option1="ngModel">
+        <div [hidden]="option1.valid || option1.pristine"
+             class="alert alert-danger">
+             option1 is required
+        </div>
+      </div>
+      
+
+      <input type="radio"  [(ngModel)]="que.answer" value="{{que.option2}}" name="option">
+      <div class="form-group">
+        <label for="option2">Option 2</label>
+        <input type="text" class="form-control" id="option2" placeholder="option2"
+        required
+        [(ngModel)]="que.option2" name="option2" #option2="ngModel">
+        <div [hidden]="option2.valid || option2.pristine"
+             class="alert alert-danger">
+             option2 is required
+        </div>
+      </div>
+     </div>
+
+
+      <div class="form-group">
+        <label for="question">Question </label>
+        <input type="text" class="form-control" id="question" placeholder="question" 
+        required
+        [(ngModel)]="que.questions" name="question" #question="ngModel">
+        <div [hidden]="question.valid || question.pristine"
+             class="alert alert-danger">
+             Question  is required
+        </div>
+      </div>
+      
+      <div class="btn-group btn-group-sm">
+        <!-- <button type="button" class="btn btn-dark" (click)="goBack()">Back</button> -->
+        <button type="button" class="btn btn-dark" (click)="addQuestion()" 
+        [disabled]="!addQuestionForm.form.valid">Add</button>
+      </div>
+    </form>
+</div>
